@@ -134,10 +134,9 @@ async function fetchHandler() {
     const response = await fetch(URL, {
       cache: "no-store",
     });
-    const data = response.json();
-    const imageUrl = data.url;
+    const data = response.url;
+    catImage.src = data;
 
-    catImage.src = imageUrl;
     console.log(data);
   } catch (error) {
     console.log(error);
