@@ -1,0 +1,56 @@
+:root {
+  --bg-radial-gradient: radial-gradient(circle, #8a9dd1, #c58ad1);
+  --search-bg-color: #000000;
+  --button-bg-color: #ff9baacc;
+  --card-bg-color: #e6e6fa80;
+  --mobile-bg-color: #38979a;
+
+  --header-size: 100px;
+  --cat-img-size-desktop: 700px;
+  --cat-img-size-table: 400px;
+  --cat-img-size-mobile: 300px;
+  --cat-img: 500px;
+  --card-margin-bottom: 15px;
+  --card-modify-size: 35px;
+  --border-radius-5px: 5px;
+  --border-radius-10px: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.body-wrapper {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 24px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  .body-wrapper {
+    max-width: 100%;
+  }
+}
+
+body {
+  background-image: var(--bg-radial-gradient);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}

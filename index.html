@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Chewy&display=swap"
+        rel="stylesheet"
+      />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Chewy&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet"
+      />
+      <link rel="stylesheet" href="./styles/global.css" />
+      <link rel="stylesheet" href="./styles/header.css" />
+      <link rel="stylesheet" href="./styles/cardStyles.css" />
+      <link rel="stylesheet" href="./styles/main.css" />
+      <link rel="stylesheet" href="./styles/footer.css" />
+      <link rel="stylesheet" href="./styles/catsstuff.css" />
+      <link rel="icon" type="image/x-icon" href="./images/grim-reaper.png" />
+      <title>Grim Reaper</title>
+    </head>
+    <body>
+      <div class="body-wrapper">
+        <header class="header">
+          <!-- HEADER LOGO -->
+
+          <a href="#" class="header__logo" onclick="menuOnLogo()">
+            <img
+              src="./images/skull-and-bones.png"
+              alt="Dugimail Logotype"
+              class="header__logo"
+            />
+          </a>
+          <ul class="mobile__list">
+            <li class="mobile__item">
+              <a href="#" class="mobile__link">Home</a>
+            </li>
+            <li class="mobile__item">
+              <a href="#" class="mobile__link">About Me</a>
+            </li>
+            <li class="mobile__item">
+              <a href="#" class="mobile__link">Other projects</a>
+            </li>
+            <li class="mobile__item">
+              <a href="#" class="mobile__link">Contacts</a>
+            </li>
+          </ul>
+
+          <!-- HEADER NAVIGATION -->
+
+          <ul class="header__list">
+            <li class="header__item">
+              <a href="#" class="header__link">Home</a>
+            </li>
+            <li class="header__item">
+              <a href="#" class="header__link">About Me</a>
+            </li>
+            <li class="header__item">
+              <a href="#" class="header__link">Other projects</a>
+            </li>
+            <li class="header__item">
+              <a href="#" class="header__link">Contacts</a>
+            </li>
+          </ul>
+
+          <!-- SEARCH FORM -->
+          <form class="search__form" onsubmit="search()">
+            <input class="search__input" type="search" />
+            <button class="search__btn" type="submit">Submit</button>
+          </form>
+        </header>
+
+        <!-- MAIN -->
+
+        <main>
+          <!-- SEARCH RESULTS GRIDBOX-->
+          <section>
+            <div class="search__results"></div>
+          </section>
+
+          <!-- CAT API & FUN STUFF -->
+          <section class="catsstuff">
+            <div class="rand-cat-onclick__container">
+              <div class="rand-cat_img__wrapper">
+                <img
+                  src="./images/notWeekend.jpg"
+                  alt="catImage"
+                  class="rand-cat__img"
+                />
+              </div>
+              <button class="rand-cat__btn" type="button">Random Cat</button>
+            </div>
+
+            <div class="feed-cat__container">
+              <div class="feed-cat__img__wrapper">
+                <img
+                  src="./images/catInPan.jpg"
+                  alt="catInPan"
+                  class="feed-cat__img"
+                />
+              </div>
+              <button class="feed-cat__btn">Feed the cat</button>
+            </div>
+          </section>
+
+          <!-- CARDS -->
+
+          <section>
+            <div class="cards-wrapper">
+              <div class="card">
+                <div class="card__image-wrapper">
+                  <img
+                    сlass="card__image"
+                    src="./images/catRaskolnikov.jpg"
+                    alt="Grim Reaper test"
+                  />
+                </div>
+                <div class="card__content">
+                  <h3 class="card__title">Card title</h3>
+                  <p class="card__descr">Description of the card</p>
+                  <button class="card__button">Button</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+        <footer class="footer">
+          <div class="footer-wrapper">
+            <p class="footer__text">Made by Deathmark. 2024.</p>
+          </div>
+        </footer>
+      </div>
+      <script src="./sctipts/main.js"></script>
+    </body>
+  </html>
+</html>
