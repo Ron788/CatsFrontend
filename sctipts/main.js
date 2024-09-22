@@ -132,10 +132,10 @@ const URL = "https://cataas.com/cat";
 async function fetchHandler() {
   try {
     const response = await fetch(URL);
-    const data = response.url;
+    const data = response.json();
+    const imageUrl = data.url;
 
-    catImage.src = data;
-
+    catImage.src = imageUrl;
     console.log(data);
   } catch (error) {
     console.log(error);
