@@ -131,7 +131,9 @@ const URL = "https://cataas.com/cat";
 
 async function fetchHandler() {
   try {
-    const response = await fetch(URL);
+    const response = await fetch(URL, {
+      cache: "no-store",
+    });
     const data = response.json();
     const imageUrl = data.url;
 
