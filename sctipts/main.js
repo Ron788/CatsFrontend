@@ -5,25 +5,21 @@ const cardsArray = [
     img: "./images/catRaskolnikov.jpg",
     title: "Card title 1",
     descr: "Description of the card 1",
-    id: cardId++,
   },
   {
     img: "./images/catRaskolnikov.jpg",
     title: "Card title 2",
     descr: "Description of the card 2",
-    id: cardId++,
   },
   {
     img: "./images/catRaskolnikov.jpg",
     title: "Card title 3",
     descr: "Description of the card 3",
-    id: cardId++,
   },
   {
     img: "./images/catRaskolnikov.jpg",
     title: "Card title 4",
     descr: "Description of the card 4",
-    id: cardId++,
   },
 ];
 
@@ -42,9 +38,18 @@ function createCard(cardsArray) {
       <div class="card__image-wrapper">
         <img
           сlass="card__image"
+          id="${cardId++}"
           src="${card.img}"
           alt="Grim Reaper test"
         />
+        <button class="card-delete__btn">X</button>
+        <button class="card-edit__btn">
+          <img
+            src="./images/edit.svg"
+            alt="edit"
+            class="card-edit__img"
+          />
+        </button>
       </div>
       <div class="card__content">
         <h3 class="card__title">${card.title}</h3>
