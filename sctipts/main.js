@@ -3,30 +3,38 @@ let cardId = 0;
 const cardsArray = [
   {
     img: "./images/catRaskolnikov.jpg",
-    title: "Card title 1",
-    descr: "Description of the card 1",
+    title: `Card title`,
+    descr: `Description of the card`,
   },
   {
     img: "./images/catRaskolnikov.jpg",
-    title: "Card title 2",
-    descr: "Description of the card 2",
+    title: `Card title`,
+    descr: `Description of the card`,
   },
   {
     img: "./images/catRaskolnikov.jpg",
-    title: "Card title 3",
-    descr: "Description of the card 3",
+    title: `Card title`,
+    descr: `Description of the card`,
   },
   {
     img: "./images/catRaskolnikov.jpg",
-    title: "Card title 4",
-    descr: "Description of the card 4",
+    title: `Card title`,
+    descr: `Description of the card`,
   },
 ];
 
 //event listener on load of window(site)
 window.addEventListener("load", () => {
   createCard(cardsArray);
-  updateCards();
+
+  let deleteBtn = document.querySelectorAll(".card-delete__btn");
+
+  for (let i = 0; i < deleteBtn.length; i++) {
+    deleteBtn[i].addEventListener("click", (event) => {
+      event.target.closest(".card").remove();
+    });
+  }
+  updateCardsData();
 });
 
 function createCard(cardsArray) {
@@ -34,11 +42,10 @@ function createCard(cardsArray) {
 
   cardsArray.forEach((card) => {
     const cardHTML = `
-    <div class="card">
+    <div class="card" id="${cardId++}">
       <div class="card__image-wrapper">
         <img
           сlass="card__image"
-          id="${cardId++}"
           src="${card.img}"
           alt="Grim Reaper test"
         />
@@ -64,7 +71,7 @@ function createCard(cardsArray) {
 }
 
 //Function is need to include cards created with createCard in search
-function updateCards() {
+function updateCardsData() {
   cards = document.querySelectorAll(".card");
   cardTitles = document.querySelectorAll(".card__title");
   cardDescrs = document.querySelectorAll(".card__descr");
