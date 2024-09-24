@@ -24,7 +24,7 @@ const cardsArray = [
 ];
 
 //event listener on load of window(site)
-window.addEventListener("load", () => {
+addEventListener("DOMContentLoaded", () => {
   displayCards(cardsArray);
 
   let deleteBtn = document.querySelectorAll(".card-delete__btn");
@@ -35,7 +35,6 @@ window.addEventListener("load", () => {
     });
   }
   updateCardsData();
-  displayCards();
 });
 
 function displayCards(cardsArray) {
