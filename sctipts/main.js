@@ -25,7 +25,7 @@ const cardsArray = [
 
 //event listener on load of window(site)
 window.addEventListener("load", () => {
-  createCard(cardsArray);
+  displayCards(cardsArray);
 
   let deleteBtn = document.querySelectorAll(".card-delete__btn");
 
@@ -35,9 +35,10 @@ window.addEventListener("load", () => {
     });
   }
   updateCardsData();
+  displayCards();
 });
 
-function createCard(cardsArray) {
+function displayCards(cardsArray) {
   const cardsWrapper = document.querySelector(".cards-wrapper");
 
   cardsArray.forEach((card) => {
