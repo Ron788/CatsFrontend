@@ -82,11 +82,12 @@ let searchResults = document.querySelector(".search__results");
 
 //that thing for getting input from form on website
 searchForm.addEventListener("submit", (event) => {
+  //clear search results on submit
+  searchResults.innerHTML = "";
+  updateCardsData();
   event.preventDefault();
   let foundMatches = false;
 
-  //clear search results on submit
-  searchResults.innerHTML = "";
   //change class of search results to get it shown
   searchResults.classList.add("show");
 
