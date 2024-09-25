@@ -33,3 +33,14 @@
     grid-template-columns: 1fr;
   }
 }
+
+.main-wrapper {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+}
+
+@media screen and (max-width: 1200px) {
+  .main-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

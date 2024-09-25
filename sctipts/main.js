@@ -1,5 +1,4 @@
 //array of cards with img, title and descr
-let cardId = 0;
 const cardsArray = [
   {
     img: "./images/catRaskolnikov.jpg",
@@ -22,6 +21,7 @@ const cardsArray = [
     descr: `Description of the card`,
   },
 ];
+let cardId = 0;
 
 //event listener on load of window(site)
 addEventListener("DOMContentLoaded", () => {
@@ -39,6 +39,8 @@ addEventListener("DOMContentLoaded", () => {
 
 function displayCards(cardsArray) {
   const cardsWrapper = document.querySelector(".cards-wrapper");
+
+  cardsWrapper.innerHTML = "";
 
   cardsArray.forEach((card) => {
     const cardHTML = `
@@ -73,6 +75,7 @@ function displayCards(cardsArray) {
 //Function is need to include cards created with createCard in search
 function updateCardsData() {
   cards = document.querySelectorAll(".card");
+  cardImages = document.querySelectorAll(".card__image").src;
   cardTitles = document.querySelectorAll(".card__title");
   cardDescrs = document.querySelectorAll(".card__descr");
 }
@@ -167,4 +170,23 @@ function feedTheCat() {
 
 feedCatBtn.addEventListener("click", () => {
   feedTheCat();
+});
+
+const cardForm = document.querySelector(".card__form");
+
+cardForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const inputImg = document.querySelector(".form__input").value;
+  const inputTitle = document.querySelector(".title__input").value;
+  const inputDescr = document.querySelector(".descr__input").value;
+
+  const newCard = {
+    img: inputImg,
+    title: inputTitle,
+    descr: inputDescr,
+  };
+
+  cardsArray.push(newCard);
+
+  displayCards(cardsArray);
 });
