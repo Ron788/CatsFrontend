@@ -1,84 +1,179 @@
-//array of cards with img, title and descr
 const cardsArray = [
   {
-    img: "./images/catRaskolnikov.jpg",
+    id: 0,
+    src: "./images/catRaskolnikov.jpg",
     title: `Card title`,
     descr: `Description of the card`,
   },
   {
-    img: "./images/catRaskolnikov.jpg",
+    id: 1,
+    src: "./images/catRaskolnikov.jpg",
     title: `Card title`,
     descr: `Description of the card`,
   },
   {
-    img: "./images/catRaskolnikov.jpg",
+    id: 2,
+    src: "./images/catRaskolnikov.jpg",
     title: `Card title`,
     descr: `Description of the card`,
   },
   {
-    img: "./images/catRaskolnikov.jpg",
+    id: 3,
+    src: "./images/catGotCubeHead.jpg",
     title: `Card title`,
     descr: `Description of the card`,
   },
 ];
-let cardId = 0;
 
-//event listener on load of window(site)
-addEventListener("DOMContentLoaded", () => {
-  displayCards(cardsArray);
+function updateCardsData() {
+  cards = document.querySelectorAll(".card");
+  cardTitles = document.querySelectorAll(".card__title");
+  cardDescrs = document.querySelectorAll(".card__descr");
+}
 
-  let deleteBtn = document.querySelectorAll(".card-delete__btn");
-
-  for (let i = 0; i < deleteBtn.length; i++) {
-    deleteBtn[i].addEventListener("click", (event) => {
-      event.target.closest(".card").remove();
-    });
+const menuOnLogo = () => {
+  const menu = document.querySelector(".mobile__list");
+  if (window.innerWidth <= 960) {
+    if (menu.classList.contains("show")) {
+      menu.classList.remove("show");
+    } else {
+      menu.classList.add("show");
+    }
   }
-  updateCardsData();
+};
+
+//CAT API that shows random cat img on click of button
+const catButton = document.querySelector(".rand-cat__btn");
+const catImage = document.querySelector(".rand-cat__img");
+const URL = "https://cataas.com/cat";
+
+async function fetchHandler() {
+  try {
+    const response = await fetch(`${URL}?_=${Date.now()}`);
+    const data = response.url;
+    catImage.src = data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+catButton.addEventListener("click", () => {
+  fetchHandler();
 });
 
-function displayCards(cardsArray) {
+//feed the cat
+
+const feedCatImg = document.querySelector(".feed-cat__img");
+const feedCatBtn = document.querySelector(".feed-cat__btn");
+
+feedCatBtn.addEventListener("click", () => {
+  feedCatImg.src = "./images/catStalker.jpg";
+});
+
+function displayCard(cardsArray) {
   const cardsWrapper = document.querySelector(".cards-wrapper");
 
   cardsWrapper.innerHTML = "";
 
   cardsArray.forEach((card) => {
     const cardHTML = `
-    <div class="card" id="${cardId++}">
-      <div class="card__image-wrapper">
-        <img
-          сlass="card__image"
-          src="${card.img}"
-          alt="Grim Reaper test"
-        />
-        <button class="card-delete__btn">X</button>
-        <button class="card-edit__btn">
-          <img
-            src="./images/edit.svg"
-            alt="edit"
-            class="card-edit__img"
-          />
-        </button>
-      </div>
-      <div class="card__content">
-        <h3 class="card__title">${card.title}</h3>
-        <p class="card__descr">${card.descr}</p>
-        <button class="card__button">Button</button>
-      </div>
-    </div>
-    `;
+        <div class="card" id="${card.id}">
+          <div class="card__image-wrapper">
+            <img
+              class="card__img"
+              src="${card.src}"
+              alt="Grim Reaper test"
+            />
+            <button class="card-delete__btn">X</button>
+            <button class="card-edit__btn">
+              Edit
+            </button>
+          </div>
+          <div class="card__content">
+            <h3 class="card__title">${card.title}</h3>
+            <p class="card__descr">${card.descr}</p>
+            <button class="card__button">Button</button>
+          </div>
+        </div>
+      `;
 
     cardsWrapper.insertAdjacentHTML("beforeend", cardHTML);
   });
+
+  let deleteBtn = document.querySelectorAll(".card-delete__btn");
+  let editBtn = document.querySelectorAll(".card-edit__btn");
+
+  for (let i = 0; i < editBtn.length; i++) {
+    editBtn[i].addEventListener("click", (event) => {
+      const cardId = event.target.closest(".card").id;
+      const cardIndex = cardsArray.findIndex(
+        (card) => card.id === parseInt(cardId)
+      );
+
+      if (cardIndex !== -1) {
+        const inputImg = document.querySelector(".form__input");
+        const inputTitle = document.querySelector(".title__input");
+        const inputDescr = document.querySelector(".descr__input");
+
+        inputImg.value = cardsArray[cardIndex].src;
+        inputTitle.value = cardsArray[cardIndex].title;
+        inputDescr.value = cardsArray[cardIndex].descr;
+
+        document.querySelector("#card-index").value = cardIndex;
+      }
+    });
+  }
+
+  for (let i = 0; i < deleteBtn.length; i++) {
+    deleteBtn[i].addEventListener("click", (event) => {
+      const cardId = event.target.closest(".card").id;
+      const cardIndex = cardsArray.findIndex(
+        (card) => card.id === parseInt(cardId)
+      );
+
+      if (cardIndex !== -1) {
+        cardsArray.splice(cardIndex, 1);
+      }
+
+      event.target.closest(".card").remove();
+      updateCardsData();
+    });
+  }
+
+  updateCardsData();
 }
 
-//Function is need to include cards created with createCard in search
-function updateCardsData() {
-  cards = document.querySelectorAll(".card");
-  cardImages = document.querySelectorAll(".card__image").src;
-  cardTitles = document.querySelectorAll(".card__title");
-  cardDescrs = document.querySelectorAll(".card__descr");
-}
+const cardForm = document.querySelector(".card__form");
+
+cardForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const inputImg = document.querySelector(".img__input").value;
+  const inputTitle = document.querySelector(".title__input").value;
+  const inputDescr = document.querySelector(".descr__input").value;
+  const cardIndex = document.querySelector("#card-index").value;
+
+  if (cardIndex !== "-1") {
+    cardsArray[cardIndex].src = inputImg;
+    cardsArray[cardIndex].title = inputTitle;
+    cardsArray[cardIndex].descr = inputDescr;
+  } else {
+    const newCard = {
+      id: Date.now(),
+      src: inputImg,
+      title: inputTitle,
+      descr: inputDescr,
+    };
+    cardsArray.push(newCard);
+  }
+
+  displayCard(cardsArray); // Update the card display with the new data
+  updateCardsData();
+
+  document.querySelector("#card-index").value = "-1";
+  document.querySelector(".img__input").value = "";
+  document.querySelector(".title__input").value = "";
+  document.querySelector(".descr__input").value = "";
+});
 
 const searchForm = document.querySelector(".search__form");
 let searchResults = document.querySelector(".search__results");
@@ -128,65 +223,7 @@ searchForm.addEventListener("submit", (event) => {
   //search Thru Cards
 });
 
-//menu on click on logo on mobile
-const menuOnLogo = () => {
-  const menu = document.querySelector(".mobile__list");
-  if (window.innerWidth <= 960) {
-    if (menu.classList.contains("show")) {
-      menu.classList.remove("show");
-    } else {
-      menu.classList.add("show");
-    }
-  }
-};
-
-//CAT API that shows random cat img on click of button
-const catButton = document.querySelector(".rand-cat__btn");
-const catImage = document.querySelector(".rand-cat__img");
-const URL = "https://cataas.com/cat";
-
-async function fetchHandler() {
-  try {
-    const response = await fetch(`${URL}?_=${Date.now()}`);
-    const data = response.url;
-    catImage.src = data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-catButton.addEventListener("click", () => {
-  fetchHandler();
-});
-
-//feed the cat
-
-const feedCatImg = document.querySelector(".feed-cat__img");
-const feedCatBtn = document.querySelector(".feed-cat__btn");
-
-function feedTheCat() {
-  feedCatImg.src = "./images/catStalker.jpg";
-}
-
-feedCatBtn.addEventListener("click", () => {
-  feedTheCat();
-});
-
-const cardForm = document.querySelector(".card__form");
-
-cardForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const inputImg = document.querySelector(".form__input").value;
-  const inputTitle = document.querySelector(".title__input").value;
-  const inputDescr = document.querySelector(".descr__input").value;
-
-  const newCard = {
-    img: inputImg,
-    title: inputTitle,
-    descr: inputDescr,
-  };
-
-  cardsArray.push(newCard);
-
-  displayCards(cardsArray);
+addEventListener("DOMContentLoaded", () => {
+  displayCard(cardsArray);
+  updateCardsData();
 });

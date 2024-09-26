@@ -112,14 +112,14 @@
 
           <div class="main-wrapper">
             <form class="card__form">
+              <input type="hidden" id="card-index" value="-1" />
               <input
                 type="text"
-                class="form__input"
+                class="img__input"
                 name="imgInput"
                 id="imgInput"
                 placeholder="img"
                 required
-                autocomplete="off"
               />
               <input
                 type="text"
@@ -128,7 +128,6 @@
                 id="titleInput"
                 placeholder="title"
                 required
-                utocomplete="off"
               />
               <input
                 type="text"
@@ -137,9 +136,8 @@
                 id="descrInput"
                 placeholder="descr"
                 required
-                utocomplete="off"
               />
-              <button type="submit">Submit</button>
+              <button class="btn__input" type="submit">Submit</button>
             </form>
             <div class="cards-wrapper"></div>
           </div>

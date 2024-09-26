@@ -44,3 +44,36 @@
     grid-template-columns: 1fr;
   }
 }
+
+.card__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 5px;
+}
+
+.img__input,
+.title__input,
+.descr__input {
+  padding: 5px;
+  margin-right: 5px;
+  font-family: "Chewy", cursive;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 120%;
+  border: 1px solid black;
+  border-radius: var(--border-radius-10px);
+}
+
+.btn__input {
+  font-family: "Chewy", cursive;
+  font-size: 24px;
+  margin-right: 5px;
+  font-weight: 400;
+  line-height: 120%;
+  border: 1px solid black;
+  border-radius: var(--border-radius-10px);
+  padding: 5px;
+  cursor: pointer;
+}
