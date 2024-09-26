@@ -1,27 +1,45 @@
 const cardsArray = [
   {
     id: 0,
-    src: "./images/catRaskolnikov.jpg",
-    title: `Card title`,
-    descr: `Description of the card`,
+    src: "./images/catBoss.jpg",
+    title: `Бро босс`,
+    descr: `Этот бро разлегся как чертов босс, хозяин территории`,
   },
   {
     id: 1,
-    src: "./images/catRaskolnikov.jpg",
-    title: `Card title`,
-    descr: `Description of the card`,
+    src: "./images/catStratch.jpg",
+    title: `Бро тянется`,
+    descr: `Этот бро разминается после сна`,
   },
   {
     id: 2,
-    src: "./images/catRaskolnikov.jpg",
-    title: `Card title`,
-    descr: `Description of the card`,
+    src: "./images/catSniper.jpg",
+    title: `Бро снайпер`,
+    descr: `Этот бро попадает в яблочко 10 из 10 раз`,
   },
   {
     id: 3,
+    src: "./images/catLooks.jpg",
+    title: `Бро смотрит`,
+    descr: `Этот бро очень любопытно смотрит в камеру, интересно`,
+  },
+  {
+    id: 4,
+    src: "./images/catTouchesLegs.jpg",
+    title: `Бро креветка`,
+    descr: `Этот бро скрутился как креветка, выпрями спину!`,
+  },
+  {
+    id: 5,
+    src: "./images/officeCat.jpg",
+    title: `Бро работник`,
+    descr: `Этот бро самый производительный работник в офисе. Премия в виде рыбов обеспеченна`,
+  },
+  {
+    id: 6,
     src: "./images/catGotCubeHead.jpg",
-    title: `Card title`,
-    descr: `Description of the card`,
+    title: `Бро Стив`,
+    descr: `Этот бро играл в майнкрафт слишком много,теперь у него куб вместо головы`,
   },
 ];
 
