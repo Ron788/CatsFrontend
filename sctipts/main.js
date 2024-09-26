@@ -111,7 +111,7 @@ function displayCard(cardsArray) {
       );
 
       if (cardIndex !== -1) {
-        const inputImg = document.querySelector(".form__input");
+        const inputImg = document.querySelector(".img__input");
         const inputTitle = document.querySelector(".title__input");
         const inputDescr = document.querySelector(".descr__input");
 
