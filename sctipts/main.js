@@ -102,9 +102,11 @@ function displayCard(cardsArray) {
               src="${card.src}"
               alt="Grim Reaper test"
             />
-            <button class="card-delete__btn">X</button>
             <button class="card-edit__btn">
-              Edit
+            <img src="./images/edit.svg" alt="Edit" />
+            </button>
+            <button class="card-delete__btn">
+            <img src="./images/delete.svg" alt="Edit" />
             </button>
           </div>
           <div class="card__content">
