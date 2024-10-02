@@ -41,18 +41,10 @@
   object-fit: contain;
 }
 
-.rand-cat__btn,
+/* .rand-cat__btn,
 .feed-cat__btn {
-  font-family: "Pacifico", sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 120%;
-  padding: 10px 15px;
   border: 1px solid transparent;
-  border-radius: var(--border-radius-5px);
-  background-color: var(--button-bg-color);
-  cursor: pointer;
-}
+} */
 
 @media screen and (max-width: 600px) {
   .rand-cat__img,

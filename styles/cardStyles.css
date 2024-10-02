@@ -26,40 +26,31 @@
   border-radius: var(--border-radius-10px);
 }
 
-.card-edit__btn {
+.card-change__btn {
   position: absolute;
-  align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 35px;
+  align-items: center;
+  width: var(--card-change-btn-size);
+  height: var(--card-change-btn-size);
   padding: 5px;
-  position: absolute;
   border: none;
   border-radius: 50%;
-  right: 52px;
-  top: 10px;
   cursor: pointer;
   display: none;
 }
 
-.card-delete__btn {
-  justify-content: center;
-  align-items: center;
-  background-color: red;
-  color: black;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  border: none;
-  border-radius: 50%;
+.del__btn {
   right: 10px;
   top: 10px;
-  cursor: pointer;
-  display: none;
 }
 
-.card:hover .card-edit__btn,
-.card:hover .card-delete__btn {
+.edit__btn {
+  right: 52px;
+  top: 10px;
+}
+
+.card:hover .card-change__btn,
+.card:hover .card-change__btn {
   display: inline;
 }
 
@@ -104,16 +95,7 @@
 }
 
 .card__button {
-  font-family: "Pacifico", sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 120%;
   margin-top: auto;
-  padding: 10px 15px;
-  border: 1px solid transparent;
-  border-radius: var(--border-radius-5px);
-  background-color: var(--button-bg-color);
-  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

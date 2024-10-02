@@ -2,14 +2,16 @@
   --bg-radial-gradient: radial-gradient(circle, #8a9dd1, #c58ad1);
   --search-bg-color: #000000;
   --button-bg-color: #ff9baacc;
+  --button-hover-bg-color: #f98e9e;
   --card-bg-color: #e6e6fa80;
   --mobile-bg-color: #38979a;
 
-  --header-size: 100px;
+  --header-logo-size: 100px;
   --cat-img-size-desktop: 700px;
   --cat-img-size-table: 400px;
   --cat-img-size-mobile: 275px;
   --cat-img: 500px;
+  --card-change-btn-size: 35px;
   --card-margin-bottom: 15px;
   --card-modify-size: 35px;
   --border-radius-5px: 5px;
@@ -27,6 +29,23 @@
   margin: 0 auto;
   padding: 0 24px;
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn {
+  font-family: "Pacifico", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 120%;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-5px);
+  background-color: var(--button-bg-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: var(--button-hover-bg-color);
 }
 
 @media screen and (max-width: 768px) {

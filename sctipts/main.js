@@ -102,17 +102,17 @@ function displayCard(cardsArray) {
               src="${card.src}"
               alt="Grim Reaper test"
             />
-            <button class="card-edit__btn">
+            <button class="card-change__btn edit__btn">
             <img src="./images/edit.svg" alt="Edit" />
             </button>
-            <button class="card-delete__btn">
+            <button class="card-change__btn del__btn">
             <img src="./images/delete.svg" alt="Edit" />
             </button>
           </div>
           <div class="card__content">
             <h3 class="card__title">${card.title}</h3>
             <p class="card__descr">${card.descr}</p>
-            <button class="card__button">Button</button>
+            <button class="card__button btn">Button</button>
           </div>
         </div>
       `;
@@ -120,8 +120,8 @@ function displayCard(cardsArray) {
     cardsWrapper.insertAdjacentHTML("beforeend", cardHTML);
   });
 
-  let deleteBtn = document.querySelectorAll(".card-delete__btn");
-  let editBtn = document.querySelectorAll(".card-edit__btn");
+  let deleteBtn = document.querySelectorAll(".del__btn");
+  let editBtn = document.querySelectorAll(".edit__btn");
 
   for (let i = 0; i < editBtn.length; i++) {
     editBtn[i].addEventListener("click", (event) => {
@@ -142,7 +142,7 @@ function displayCard(cardsArray) {
         document.querySelector("#card-index").value = cardIndex;
       }
 
-      const deleteBtns = document.querySelectorAll(".card-delete__btn");
+      const deleteBtns = document.querySelectorAll(".del__btn");
       deleteBtns.forEach((btn) => {
         btn.disabled = true;
       });
@@ -241,8 +241,8 @@ searchForm.addEventListener("submit", (event) => {
     let clonedCard = card.cloneNode(true);
 
     //remove edit and delete btns
-    clonedCard.querySelector(".card-edit__btn").remove();
-    clonedCard.querySelector(".card-delete__btn").remove();
+    clonedCard.querySelector(".edit__btn").remove();
+    clonedCard.querySelector(".del__btn").remove();
 
     searchResults.appendChild(clonedCard);
     foundMatches = true;
