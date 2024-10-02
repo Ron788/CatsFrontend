@@ -86,7 +86,8 @@
 }
 
 .card__title {
-  font-family: "Chewy", cursive;
+  font-family: "Pacifico", cursive;
+  word-break: break-all;
   font-size: 36px;
   font-weight: 400;
   line-height: 120%;
@@ -94,7 +95,8 @@
 }
 
 .card__descr {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Merriweather", sans-serif;
+  word-break: break-all;
   font-size: 20px;
   font-weight: 400;
   line-height: 120%;
@@ -102,7 +104,7 @@
 }
 
 .card__button {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Pacifico", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 120%;

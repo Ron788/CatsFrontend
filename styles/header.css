@@ -13,7 +13,7 @@
 }
 
 .mobile__list {
-  font-family: "Chewy", cursive;
+  font-family: "Merriweather", cursive;
   font-size: 16px;
   font-weight: 400;
   line-height: 100%;
@@ -42,7 +42,7 @@
 }
 
 .header__list {
-  font-family: "Chewy", cursive;
+  font-family: "Merriweather", cursive;
   font-size: 24px;
   font-weight: 400;
   line-height: 120%;
@@ -64,7 +64,7 @@
 }
 
 .search__input {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Merriweather", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 100%;
@@ -76,7 +76,7 @@
 }
 
 .search__btn {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Merriweather", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 100%;
