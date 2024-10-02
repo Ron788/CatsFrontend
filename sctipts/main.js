@@ -139,6 +139,11 @@ function displayCard(cardsArray) {
 
         document.querySelector("#card-index").value = cardIndex;
       }
+
+      const deleteBtns = document.querySelectorAll(".card-delete__btn");
+      deleteBtns.forEach((btn) => {
+        btn.disabled = true;
+      });
     });
   }
 
@@ -232,6 +237,11 @@ searchForm.addEventListener("submit", (event) => {
 
     //clone card
     let clonedCard = card.cloneNode(true);
+
+    //remove edit and delete btns
+    clonedCard.querySelector(".card-edit__btn").remove();
+    clonedCard.querySelector(".card-delete__btn").remove();
+
     searchResults.appendChild(clonedCard);
     foundMatches = true;
   });
