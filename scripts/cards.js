@@ -67,34 +67,6 @@ const menuOnLogo = () => {
   }
 };
 
-//CAT API that shows random cat img on click of button
-const catButton = document.querySelector(".rand-cat__btn");
-const catImage = document.querySelector(".rand-cat__img");
-const URL = "https://cataas.com/cat";
-
-async function fetchHandler() {
-  try {
-    const response = await fetch(`${URL}?_=${Date.now()}`);
-    const data = response.url;
-    catImage.src = data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-catButton.addEventListener("click", () => {
-  fetchHandler();
-});
-
-//feed the cat
-
-const feedCatImg = document.querySelector(".feed-cat__img");
-const feedCatBtn = document.querySelector(".feed-cat__btn");
-
-feedCatBtn.addEventListener("click", () => {
-  feedCatImg.src = "./images/catStalker.jpg";
-});
-
 function displayCard(cardsArray) {
   const cardsWrapper = document.querySelector(".cards-wrapper");
 
