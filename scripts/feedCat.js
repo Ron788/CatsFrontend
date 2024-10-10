@@ -1,11 +1,9 @@
 //feed the cat
 
-const feedCatImg = document.querySelector(".feed-cat__img");
 const feedCatBtn = document.querySelector(".feed-cat__btn");
 
 feedCatBtn.addEventListener("click", () => {
-
-
+    const feedCatImg = document.querySelector(".feed-cat__img");
 
     feedCatImg.src = "./images/catStalker.jpg";
 });

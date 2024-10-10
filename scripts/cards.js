@@ -56,14 +56,15 @@ function updateCardsData() {
   cardDescrs = document.querySelectorAll(".card__descr");
 }
 
-const menuOnLogo = () => {
+const menuInLogo = () => {
   const menu = document.querySelector(".mobile__list");
-  if (window.innerWidth <= 960) {
-    if (menu.classList.contains("show")) {
-      menu.classList.remove("show");
-    } else {
-      menu.classList.add("show");
-    }
+  if (window.innerWidth > 960) {
+    return;
+  }
+  if (menu.classList.contains("show")) {
+    menu.classList.remove("show");
+  } else {
+    menu.classList.add("show");
   }
 };
 
@@ -187,7 +188,13 @@ let searchResults = document.querySelector(".search__results");
 searchForm.addEventListener("submit", (event) => {
   //clear search results on submit
   searchResults.innerHTML = "";
-  updateCardsData();
+
+
+  cards = document.querySelectorAll(".card");
+  cardTitles = document.querySelectorAll(".card__title");
+  cardDescrs = document.querySelectorAll(".card__descr");
+
+
   event.preventDefault();
   let foundMatches = false;
 
