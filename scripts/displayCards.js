@@ -4,65 +4,51 @@ const cardsArray = [
     src: "./images/catBoss.jpg",
     title: `Бро босс`,
     descr: `Этот бро разлегся как чертов босс, хозяин территории`,
-    price: 1000,
   },
   {
     id: 1,
     src: "./images/catStratch.jpg",
     title: `Бро тянется`,
     descr: `Этот бро разминается после сна`,
-    price: 19900,
   },
   {
     id: 2,
     src: "./images/catSniper.jpg",
     title: `Бро снайпер`,
     descr: `Этот бро попадает в яблочко 10 из 10 раз`,
-    price: 18500,
   },
   {
     id: 3,
     src: "./images/catLooks.jpg",
     title: `Бро смотрит`,
     descr: `Этот бро очень любопытно смотрит в камеру, интересно`,
-    price: 12400,
   },
   {
     id: 4,
     src: "./images/catTouchesLegs.jpg",
     title: `Бро креветка`,
     descr: `Этот бро скрутился как креветка, выпрями спину!`,
-    price: 10300,
   },
   {
     id: 5,
     src: "./images/officeCat.jpg",
     title: `Бро работник`,
     descr: `Этот бро самый производительный работник в офисе. Премия в виде рыбов обеспеченна`,
-    price: 9400,
   },
   {
     id: 6,
     src: "./images/catGotCubeHead.jpg",
     title: `Бро Стив`,
     descr: `Этот бро играл в майнкрафт слишком много,теперь у него куб вместо головы`,
-    price: 12000,
   },
 ];
 
-function displayCard(cardsArray) {
-  const cardsWrapper = document.querySelector(".cards-wrapper");
+function getCatData(){
+  const inputImg = document.querySelector(".img__input");
+  const inputTitle = document.querySelector(".title__input");
+  const inputDescription = document.querySelector(".descr__input");
 
-  cardsWrapper.innerHTML = "";
-
-  cardsArray.forEach((card) => cardsWrapper.insertAdjacentHTML("beforeend", getCardHTML(card)));
-
-  let deleteBtns = document.querySelectorAll(".del__btn");
-  let editBtns = document.querySelectorAll(".edit__btn");
-
-  editBtns.forEach((editBtn) => editBtn.addEventListener("click", editBtnClick(cardsArray)));
-
-  deleteBtns.forEach((deleteBtn) => deleteBtn.addEventListener("click", deleteBtnClick(cardsArray)));
+  return [inputImg, inputTitle, inputDescription];
 }
 
 const menuInLogo = () => {
@@ -77,12 +63,19 @@ const menuInLogo = () => {
   }
 };
 
-function getCatData(){
-  const inputImg = document.querySelector(".img__input");
-  const inputTitle = document.querySelector(".title__input");
-  const inputDescription = document.querySelector(".descr__input");
+function displayCard(cardsArray) {
+  const cardsWrapper = document.querySelector(".cards-wrapper");
 
-  return [inputImg, inputTitle, inputDescription];
+  cardsWrapper.innerHTML = "";
+
+  cardsArray.forEach((card) => cardsWrapper.insertAdjacentHTML("beforeend", getCardHTML(card)));
+
+  let deleteBtns = document.querySelectorAll(".del__btn");
+  let editBtns = document.querySelectorAll(".edit__btn");
+
+  editBtns.forEach((editBtn) => editBtn.addEventListener("click", editBtnClick(cardsArray)));
+
+  deleteBtns.forEach((deleteBtn) => deleteBtn.addEventListener("click", deleteBtnClick(cardsArray)));
 }
 
 function getCardHTML(card) {
@@ -103,7 +96,6 @@ function getCardHTML(card) {
           <div class="card__content">
             <h3 class="card__title">${card.title}</h3>
             <p class="card__descr">${card.descr}</p>
-            <p class="card__price">$${card.price}</p>
             <button class="card__button btn">Button</button>
           </div>
         </div>`;
@@ -166,7 +158,6 @@ cardForm.addEventListener("submit", (event) => {
       src: inputImg,
       title: inputTitle,
       descr: inputDescription,
-      price: 1
     };
     cardsArray.push(newCard);
   }

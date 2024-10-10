@@ -7,9 +7,9 @@ searchForm.addEventListener("submit", (event) => {
     searchResults.innerHTML = "";
 
 
-    cards = document.querySelectorAll(".card");
-    cardTitles = document.querySelectorAll(".card__title");
-    cardDescrs = document.querySelectorAll(".card__descr");
+    const cards = document.querySelectorAll(".card");
+    const cardTitles = document.querySelectorAll(".card__title");
+    const cardDescriptions = document.querySelectorAll(".card__descr");
 
 
     event.preventDefault();
@@ -34,7 +34,7 @@ searchForm.addEventListener("submit", (event) => {
 
     cardTitles.forEach((cardTitle, index) => {
         const titleText = lowerTexts(cardTitle);
-        const descrText = lowerTexts(cardDescrs[index]);
+        const descrText = lowerTexts(cardDescriptions[index]);
         const card = cards[index];
 
         if (!hasMatch(titleText) && !hasMatch(descrText)) {
@@ -51,6 +51,7 @@ searchForm.addEventListener("submit", (event) => {
         searchResults.appendChild(clonedCard);
         foundMatches = true;
     });
+
     if (foundMatches === false) {
         searchResults.innerHTML = "No matches found";
     }
