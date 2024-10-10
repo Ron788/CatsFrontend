@@ -50,11 +50,6 @@ const cardsArray = [
   },
 ];
 
-function updateCardsData() {
-  cards = document.querySelectorAll(".card");
-  cardTitles = document.querySelectorAll(".card__title");
-  cardDescrs = document.querySelectorAll(".card__descr");
-}
 
 const menuInLogo = () => {
   const menu = document.querySelector(".mobile__list");
@@ -68,14 +63,18 @@ const menuInLogo = () => {
   }
 };
 
-function displayCard(cardsArray) {
-  const cardsWrapper = document.querySelector(".cards-wrapper");
+function getCatData(){
+  const inputImg = document.querySelector(".img__input");
+  const inputTitle = document.querySelector(".title__input");
+  const inputDescription = document.querySelector(".descr__input");
 
-  cardsWrapper.innerHTML = "";
+  console.log(inputImg, inputTitle, inputDescription);
 
-  cardsArray.forEach((card) => {
-    const cardHTML = `
-        <div class="card" id="${card.id}">
+  return [inputImg, inputTitle, inputDescription];
+}
+
+function getCardHTML(card) {
+  return `<div class="card" id="${card.id}">
           <div class="card__image-wrapper">
             <img
               class="card__img"
@@ -86,7 +85,7 @@ function displayCard(cardsArray) {
             <img src="./images/edit.svg" alt="Edit" />
             </button>
             <button class="card-change__btn del__btn">
-            <img src="./images/delete.svg" alt="Edit" />
+            <img src="./images/delete.svg" alt="Del" />
             </button>
           </div>
           <div class="card__content">
@@ -95,85 +94,89 @@ function displayCard(cardsArray) {
             <p class="card__price">$${card.price}</p>
             <button class="card__button btn">Button</button>
           </div>
-        </div>
-      `;
+        </div>`;
+}
 
-    cardsWrapper.insertAdjacentHTML("beforeend", cardHTML);
-  });
-
-  let deleteBtn = document.querySelectorAll(".del__btn");
-  let editBtn = document.querySelectorAll(".edit__btn");
-
-  for (let i = 0; i < editBtn.length; i++) {
-    editBtn[i].addEventListener("click", (event) => {
-      const cardId = event.target.closest(".card").id;
-      const cardIndex = cardsArray.findIndex(
+function editBtnClick(cardsArray){
+  return (event) => {
+    const cardId = event.target.closest(".card").id;
+    const cardIndex = cardsArray.findIndex(
         (card) => card.id === parseInt(cardId)
-      );
+    );
 
-      if (cardIndex !== -1) {
-        const inputImg = document.querySelector(".img__input");
-        const inputTitle = document.querySelector(".title__input");
-        const inputDescr = document.querySelector(".descr__input");
+    if (cardIndex !== -1) {
 
-        inputImg.value = cardsArray[cardIndex].src;
-        inputTitle.value = cardsArray[cardIndex].title;
-        inputDescr.value = cardsArray[cardIndex].descr;
+      const [inputImg, inputTitle, inputDescription] = getCatData();
 
-        document.querySelector("#card-index").value = cardIndex;
-      }
+      inputImg.value = cardsArray[cardIndex].src;
+      inputTitle.value = cardsArray[cardIndex].title;
+      inputDescription.value = cardsArray[cardIndex].descr;
 
-      const deleteBtns = document.querySelectorAll(".del__btn");
-      deleteBtns.forEach((btn) => {
-        btn.disabled = true;
-      });
+      console.log(inputImg, inputTitle, inputDescription);
+
+      document.querySelector("#card-index").value = cardIndex;
+    }
+
+    const deleteBtns = document.querySelectorAll(".del__btn");
+    deleteBtns.forEach((btn) => {
+      btn.disabled = true;
     });
-  }
+  };
+}
 
-  for (let i = 0; i < deleteBtn.length; i++) {
-    deleteBtn[i].addEventListener("click", (event) => {
-      const cardId = event.target.closest(".card").id;
-      const cardIndex = cardsArray.findIndex(
+function deleteBtnClick(cardsArray){
+  return (event) => {
+    const cardId = event.target.closest(".card").id;
+    const cardIndex = cardsArray.findIndex(
         (card) => card.id === parseInt(cardId)
-      );
+    );
 
-      if (cardIndex !== -1) {
-        cardsArray.splice(cardIndex, 1);
-      }
+    if (cardIndex !== -1) {
+      cardsArray.splice(cardIndex, 1);
+    }
 
-      event.target.closest(".card").remove();
-      updateCardsData();
-    });
-  }
+    event.target.closest(".card").remove();
+  };
+}
 
-  updateCardsData();
+function displayCard(cardsArray) {
+  const cardsWrapper = document.querySelector(".cards-wrapper");
+
+  cardsWrapper.innerHTML = "";
+
+  cardsArray.forEach((card) => cardsWrapper.insertAdjacentHTML("beforeend", getCardHTML(card)));
+
+  let deleteBtns = document.querySelectorAll(".del__btn");
+  let editBtns = document.querySelectorAll(".edit__btn");
+
+  editBtns.forEach((editBtn) => editBtn.addEventListener("click", editBtnClick(cardsArray)));
+
+  deleteBtns.forEach((deleteBtn) => deleteBtn.addEventListener("click", deleteBtnClick(cardsArray)));
 }
 
 const cardForm = document.querySelector(".card__form");
 
 cardForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const inputImg = document.querySelector(".img__input").value;
-  const inputTitle = document.querySelector(".title__input").value;
-  const inputDescr = document.querySelector(".descr__input").value;
+  const [inputImg, inputTitle, inputDescription] = getCatData();
   const cardIndex = document.querySelector("#card-index").value;
 
   if (cardIndex !== "-1") {
-    cardsArray[cardIndex].src = inputImg;
-    cardsArray[cardIndex].title = inputTitle;
-    cardsArray[cardIndex].descr = inputDescr;
+    cardsArray[cardIndex].src = inputImg.value;
+    cardsArray[cardIndex].title = inputTitle.value;
+    cardsArray[cardIndex].descr = inputDescription.value;
   } else {
     const newCard = {
       id: Date.now(),
       src: inputImg,
       title: inputTitle,
-      descr: inputDescr,
+      descr: inputDescription,
+      price: 1
     };
     cardsArray.push(newCard);
   }
 
   displayCard(cardsArray); // Update the card display with the new data
-  updateCardsData();
 
   document.querySelector("#card-index").value = "-1";
   document.querySelector(".img__input").value = "";
@@ -181,66 +184,6 @@ cardForm.addEventListener("submit", (event) => {
   document.querySelector(".descr__input").value = "";
 });
 
-const searchForm = document.querySelector(".search__form");
-let searchResults = document.querySelector(".search__results");
-
-//that thing for getting input from form on website
-searchForm.addEventListener("submit", (event) => {
-  //clear search results on submit
-  searchResults.innerHTML = "";
-
-
-  cards = document.querySelectorAll(".card");
-  cardTitles = document.querySelectorAll(".card__title");
-  cardDescrs = document.querySelectorAll(".card__descr");
-
-
-  event.preventDefault();
-  let foundMatches = false;
-
-  //change class of search results to get it shown
-  searchResults.classList.add("show");
-
-  //getting user input from form
-  const userInput = document
-    .querySelector(".search__input")
-    .value.trim()
-    .toLowerCase();
-  const lowerTexts = (element) =>
-    element.textContent.trim().toLowerCase().toString();
-  const hasMatch = (text) => text.includes(userInput);
-
-  if (userInput === "") {
-    searchResults.innerHTML = "Empty string was entered";
-    return;
-  }
-
-  cardTitles.forEach((cardTitle, index) => {
-    const titleText = lowerTexts(cardTitle);
-    const descrText = lowerTexts(cardDescrs[index]);
-    const card = cards[index];
-
-    if (!hasMatch(titleText) && !hasMatch(descrText)) {
-      return;
-    }
-
-    //clone card
-    let clonedCard = card.cloneNode(true);
-
-    //remove edit and delete btns
-    clonedCard.querySelector(".edit__btn").remove();
-    clonedCard.querySelector(".del__btn").remove();
-
-    searchResults.appendChild(clonedCard);
-    foundMatches = true;
-  });
-  if (foundMatches === false) {
-    searchResults.innerHTML = "No matches found";
-  }
-  //search Thru Cards
-});
-
 addEventListener("DOMContentLoaded", () => {
   displayCard(cardsArray);
-  updateCardsData();
 });
