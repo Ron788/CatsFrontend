@@ -82,8 +82,6 @@ function getCatData(){
   const inputTitle = document.querySelector(".title__input");
   const inputDescription = document.querySelector(".descr__input");
 
-  console.log(inputImg, inputTitle, inputDescription);
-
   return [inputImg, inputTitle, inputDescription];
 }
 
@@ -125,8 +123,6 @@ function editBtnClick(cardsArray){
       inputImg.value = cardsArray[cardIndex].src;
       inputTitle.value = cardsArray[cardIndex].title;
       inputDescription.value = cardsArray[cardIndex].descr;
-
-      console.log(inputImg, inputTitle, inputDescription);
 
       document.querySelector("#card-index").value = cardIndex;
     }

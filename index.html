@@ -66,7 +66,9 @@
 
           <!-- SEARCH FORM -->
           <form class="search__form">
-            <input class="search__input" type="search" />
+            <label>
+              <input class="search__input" type="search" />
+            </label>
             <button class="search__btn btn" type="submit">Submit</button>
           </form>
         </header>
@@ -109,7 +111,7 @@
           <div class="main-wrapper">
             <form class="card__form">
               <input type="hidden" id="card-index" value="-1" />
-              <input
+              <label for="imgInput"></label><input
                 type="text"
                 class="img__input"
                 name="imgInput"
@@ -117,7 +119,7 @@
                 placeholder="img"
                 required
               />
-              <input
+              <label for="titleInput"></label><input
                 type="text"
                 class="title__input"
                 name="titleInput"
@@ -125,7 +127,7 @@
                 placeholder="title"
                 required
               />
-              <input
+              <label for="descrInput"></label><input
                 type="text"
                 class="descr__input"
                 name="descrInput"
@@ -147,6 +149,7 @@
       <script src="scripts/displayCards.js"></script>
       <script src="scripts/randomCat.js"></script>
       <script src="scripts/feedCat.js"></script>
+      <script src="scripts/searchCard.js"></script>
     </body>
   </html>
 </html>
