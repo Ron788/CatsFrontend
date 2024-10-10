@@ -50,6 +50,20 @@ const cardsArray = [
   },
 ];
 
+function displayCard(cardsArray) {
+  const cardsWrapper = document.querySelector(".cards-wrapper");
+
+  cardsWrapper.innerHTML = "";
+
+  cardsArray.forEach((card) => cardsWrapper.insertAdjacentHTML("beforeend", getCardHTML(card)));
+
+  let deleteBtns = document.querySelectorAll(".del__btn");
+  let editBtns = document.querySelectorAll(".edit__btn");
+
+  editBtns.forEach((editBtn) => editBtn.addEventListener("click", editBtnClick(cardsArray)));
+
+  deleteBtns.forEach((deleteBtn) => deleteBtn.addEventListener("click", deleteBtnClick(cardsArray)));
+}
 
 const menuInLogo = () => {
   const menu = document.querySelector(".mobile__list");
@@ -137,21 +151,6 @@ function deleteBtnClick(cardsArray){
 
     event.target.closest(".card").remove();
   };
-}
-
-function displayCard(cardsArray) {
-  const cardsWrapper = document.querySelector(".cards-wrapper");
-
-  cardsWrapper.innerHTML = "";
-
-  cardsArray.forEach((card) => cardsWrapper.insertAdjacentHTML("beforeend", getCardHTML(card)));
-
-  let deleteBtns = document.querySelectorAll(".del__btn");
-  let editBtns = document.querySelectorAll(".edit__btn");
-
-  editBtns.forEach((editBtn) => editBtn.addEventListener("click", editBtnClick(cardsArray)));
-
-  deleteBtns.forEach((deleteBtn) => deleteBtn.addEventListener("click", deleteBtnClick(cardsArray)));
 }
 
 const cardForm = document.querySelector(".card__form");
